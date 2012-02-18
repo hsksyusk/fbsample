@@ -1,0 +1,3 @@
+[% WRAPPER 'include/layout.tt' %]
+I am [% $me.name %].
+[% END %]
