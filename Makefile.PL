@@ -10,6 +10,7 @@ WriteMakefile(
         'Test::More'                      => '0.98',
         'Amon2::DBI'                      => '0.06',
         'DBD::SQLite'                     => '1.33',
+        'Teng'                            => '0',
         'HTML::FillInForm::Lite'          => '1.09',
         'JSON'                            => '2.50',
         'Plack::Middleware::ReverseProxy' => '0.09',
