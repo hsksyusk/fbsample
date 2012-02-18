@@ -9,7 +9,7 @@ use Facebook::Graph;
 my $fb = Facebook::Graph->new(
 	app_id   => '107952149328756',
 	secret   => '206c4646f84232f1673233a20f026446',
-	postback => 'http://localhost:5000/callback',
+	postback => 'http://fbsample-hsksyusk.dotcloud.com/callback',
 );
 
 any '/' => sub {
