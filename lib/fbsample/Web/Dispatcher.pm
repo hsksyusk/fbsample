@@ -6,6 +6,7 @@ use Amon2::Web::Dispatcher::Lite;
 
 use LWP::Protocol::https;
 use Facebook::Graph;
+use JSON qw(decode_json);
 
 #my $fb = Facebook::Graph->new(
 #	app_id   => '107952149328756',
