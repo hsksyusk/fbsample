@@ -18,6 +18,8 @@ WriteMakefile(
         'Plack::Session'                  => '0.14',
         'Test::WWW::Mechanize::PSGI'      => '0',
         'Time::Piece'                     => '1.20',
+		'Amon2::Plugin::Web::Auth'        => '0',
+		'Amon2::Auth::Site::Facebook'     => '0',
 		'LWP::Protocol::https'            => '0',
 		'Facebook::Graph'                 => '0',
     },

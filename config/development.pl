@@ -16,4 +16,11 @@ if ( -d '/home/dotcloud/') {
             sqlite_unicode => 1,
         }
     ],
+	Auth => {
+		Facebook => {
+			client_id => '107952149328756',
+			client_secret => '206c4646f84232f1673233a20f026446',
+			scope => 'read_stream',
+		}
+	}
 };

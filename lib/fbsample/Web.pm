@@ -11,6 +11,26 @@ sub dispatch {
     return fbsample::Web::Dispatcher->dispatch($_[0]) or die "response is not generated";
 }
 
+__PACKAGE__->load_plugin(
+	'Web::Auth',
+	{
+		module => 'Facebook',
+		on_finished => sub {
+			my($c, $token, $user) = @_;
+			my $name = $user->{name} || die;
+			$c->session->set('name'  => $name );
+			$c->session->set('site'  => 'facebook');
+			$c->session->set('token' => $token);
+			return $c->redirect('/');
+		},
+		on_error => sub {
+			my ($c, $error ) = @_;
+			warn ("auth_error!![$error]");
+			return $c->redirect('/');
+		},
+	}
+);
+
 # setup view class
 use Text::Xslate;
 {

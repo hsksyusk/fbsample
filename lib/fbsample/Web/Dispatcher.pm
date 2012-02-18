@@ -7,17 +7,31 @@ use Amon2::Web::Dispatcher::Lite;
 use LWP::Protocol::https;
 use Facebook::Graph;
 
-my $fb = Facebook::Graph->new(
-	app_id   => '107952149328756',
-	secret   => '206c4646f84232f1673233a20f026446',
-	postback => 'http://fbsample-hsksyusk.dotcloud.com/callback',
-);
+#my $fb = Facebook::Graph->new(
+#	app_id   => '107952149328756',
+#	secret   => '206c4646f84232f1673233a20f026446',
+#	postback => 'http://fbsample-hsksyusk.dotcloud.com/callback',
+#);
 
 any '/' => sub {
     my ($c) = @_;
-    $c->render('index.tt');
+	my $data;
+	my $token = $c->session->get('token');
+	if( $token ) { #loggedin
+		my $ua = LWP::UserAgent->new();
+		my $res = $ua->get("https://graph.facebook.com/me/home?access_token=${token}");
+		$res->is_success or die $res->status_line;
+		$data = decode_json($res->decoded_content);
+	}
+	$c->render(
+		'index.tt',
+		{
+			name => $c->session->get('name'),
+			data => $data->{data},
+		}
+	);
 };
-
+=pod
 get '/fbpage' => sub {
 	my ($c) = @_;
 	my $uri = $fb->authorize->extend_permissions(qw//)->uri_as_string;
@@ -43,7 +57,7 @@ get '/callback' => sub {
 	my $me = $fb->fetch('hsksyusk');
 	$c->render('me.tt', me => $me );
 };
-
+=cut
 post '/account/logout' => sub {
     my ($c) = @_;
     $c->session->expire();
