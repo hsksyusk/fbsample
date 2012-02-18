@@ -4,6 +4,7 @@ use warnings;
 use utf8;
 use Amon2::Web::Dispatcher::Lite;
 
+use LWP::Protocol::https;
 use Facebook::Graph;
 
 my $fb = Facebook::Graph->new(

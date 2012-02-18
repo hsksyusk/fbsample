@@ -18,6 +18,7 @@ WriteMakefile(
         'Plack::Session'                  => '0.14',
         'Test::WWW::Mechanize::PSGI'      => '0',
         'Time::Piece'                     => '1.20',
+		'LWP::Protocol::https'            => '0',
 		'Facebook::Graph'                 => '0',
     },
     MIN_PERL_VERSION => '5.008001',
