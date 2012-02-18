@@ -17,6 +17,19 @@ any '/' => sub {
     $c->render('index.tt');
 };
 
+get '/fbpage' => sub {
+	my ($c) = @_;
+	my $uri = $fb->authorize->extend_permissions(qw//)->uri_as_string;
+	if(my $code = $c->req->param('code')) {
+		$fb->request_access_token( $c->req->param('code') );
+		my $me = $fb->fetch('hsksyusk');
+		$c->render('me.tt', me => $me );
+	}
+	else {
+		$c->render('auth_script.tt', uri=>$uri );
+	}
+};
+
 get '/connect' => sub {
 	my ($c) = @_;
 	my $uri = $fb->authorize->extend_permissions(qw//)->uri_as_string;
@@ -26,7 +39,7 @@ get '/connect' => sub {
 get '/callback' => sub {
 	my ($c) = @_;
 	$fb->request_access_token( $c->req->param('code') );
-	my $me = $fb->fetch('me');
+	my $me = $fb->fetch('hsksyusk');
 	$c->render('me.tt', me => $me );
 };
 
