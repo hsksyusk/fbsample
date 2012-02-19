@@ -1,14 +1,1 @@
-<section>
-[% IF data %]
-	Hi! [% name %]
-	<section>
-		<ul>
-			[% FOR v IN data %]
-			<li>[% v.created_time %] [% v.from.name %] [% v.message %]</li>
-			[% END %]
-		</ul>
-	</section>
-[% ELSE %]
-<script>top.location.href="http://www.facebook.com/dialog/oauth?client_id=107952149328756&redirect_uri=http://apps.facebook.com/hsksyusk_sample_app/"</script>
-[% END %]
-</section>
+test tt
