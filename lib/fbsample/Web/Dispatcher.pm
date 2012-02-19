@@ -42,14 +42,17 @@ any '/fbpage' => sub {
 		my $res = $ua->get("https://graph.facebook.com/me/home?access_token=${token}");
 		$res->is_success or die $res->status_line;
 		$data = decode_json($res->decoded_content);
+		$c->render(
+			'fbpage.tt',
+			{
+				name => $c->session->get('name'),
+				data => $data->{data},
+			}
+		);
 	}
-	$c->render(
-		'fbpage.tt',
-		{
-			name => $c->session->get('name'),
-			data => $data->{data},
-		}
-	);
+	else {
+		return $c->redirect->('http://www.facebook.com/dialog/oauth?client_id=107952149328756&redirect_uri=http://apps.facebook.com/hsksyusk_sample_app/');
+	}
 };
 
 =pod
