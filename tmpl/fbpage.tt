@@ -9,6 +9,6 @@
 		</ul>
 	</section>
 [% ELSE %]
-<script>top.location.href="/auth/facebook/authenticate"</script>
+<script>top.location.href="http://www.facebook.com/dialog/oauth?client_id=107952149328756&redirect_uri=http://apps.facebook.com/hsksyusk_sample_app/"</script>
 [% END %]
 </section>
