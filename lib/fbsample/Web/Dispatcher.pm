@@ -51,7 +51,7 @@ any '/fbpage' => sub {
 		);
 	}
 	else {
-		return $c->redirect->('http://www.facebook.com/dialog/oauth?client_id=107952149328756&redirect_uri=http://apps.facebook.com/hsksyusk_sample_app/');
+		return $c->redirect('http://www.facebook.com/dialog/oauth?client_id=107952149328756&redirect_uri=http://apps.facebook.com/hsksyusk_sample_app/');
 	}
 };
 
