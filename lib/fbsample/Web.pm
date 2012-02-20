@@ -79,7 +79,7 @@ __PACKAGE__->add_trigger(
         $res->header( 'X-Content-Type-Options' => 'nosniff' );
 
         # http://blog.mozilla.com/security/2010/09/08/x-frame-options/
-        $res->header( 'X-Frame-Options' => 'DENY' );
+        # $res->header( 'X-Frame-Options' => 'DENY' );
 
         # Cache control.
         $res->header( 'Cache-Control' => 'private' );
