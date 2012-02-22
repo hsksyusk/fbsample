@@ -35,7 +35,7 @@ any '/' => sub {
 
 post '/posttest/' => sub {
     my ($c) = @_;
-	$c->redirect('/');
+	$c->redirect('http://www.facebook.com/dialog/oauth?client_id=107952149328756&redirect_uri=http://apps.facebook.com/hsksyusk_sample_app/');
 };
 
 any '/fbpage' => sub {
