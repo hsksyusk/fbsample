@@ -35,7 +35,8 @@ any '/' => sub {
 
 post '/posttest' => sub {
     my ($c) = @_;
-    $c->redirect('/');
+	my $tmp = $c->request->param('signed_request');
+	$c->redirect('/');
 };
 
 any '/fbpage' => sub {
