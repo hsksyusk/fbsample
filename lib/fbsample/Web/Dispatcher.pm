@@ -33,9 +33,8 @@ any '/' => sub {
 	);
 };
 
-post '/posttest' => sub {
+post '/posttest/' => sub {
     my ($c) = @_;
-	my $tmp = $c->request->param('signed_request');
 	$c->redirect('/');
 };
 
